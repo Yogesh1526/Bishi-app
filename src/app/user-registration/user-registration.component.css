@@ -1,0 +1,141 @@
+/* Overall Form Container */
+.form-container {
+    width: 100%;
+    /* max-width: 800px; */
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Heading Style */
+h2 {
+    text-align: center;
+    color: #333; /* Dark gray for better readability */
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Registration Card */
+mat-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: white; /* White background for mat-card */
+    color: #333; /* Text in dark gray */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+/* Form Rows and Columns */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-column {
+    flex: 1;
+}
+
+/* Mat Form Field Styling */
+mat-form-field {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+mat-form-field .mat-form-field-label {
+    font-size: 14px;
+    color: #666; /* Medium gray for labels */
+}
+
+mat-form-field .mat-form-field-outline {
+    border-radius: 8px;
+    border-color: #ccc;
+}
+
+mat-form-field input,
+mat-form-field textarea,
+mat-form-field mat-select {
+    font-size: 15px;
+    color: #333;
+}
+
+mat-error {
+    font-size: 13px;
+    color: #d32f2f; /* Red for error messages */
+}
+
+.full-width{
+    width: 100%; /* Full width button */
+    padding: 24px;
+    background: linear-gradient(135deg, #ff8a65, #ff7043); /* Warm orange gradient */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.mat-raised-button:hover {
+    background: #ff5722; /* Solid orange for hover effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+button.mat-raised-button:disabled {
+    background: #e0e0e0; /* Muted color for disabled button */
+    color: #9e9e9e;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Mat-Card Footer Styling */
+mat-card-footer {
+    padding: 10px 0 0 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+    color: #777;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Card Title Section */
+.card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #ff8a65, #ff7043); /* Gradient background */
+    border-radius: 12px;
+    padding: 12px;
+    color: white; /* White text on gradient background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slight shadow for depth */
+  }
+  
+  /* Title Text Style */
+  .title-text {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column; /* Stack form fields on smaller screens */
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}

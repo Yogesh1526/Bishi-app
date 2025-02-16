@@ -1,0 +1,90 @@
+<div class="filter-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Customer Name</mat-label>
+    <input matInput [(ngModel)]="filters.customerName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Group</mat-label>
+    <mat-select [(ngModel)]="filters.group">
+      <mat-option *ngFor="let group of groups" [value]="group">{{ group }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Payment Mode</mat-label>
+    <mat-select [(ngModel)]="filters.paymentMode">
+      <mat-option *ngFor="let mode of paymentModes" [value]="mode">{{ mode }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Payment Receive Status</mat-label>
+    <mat-select [(ngModel)]="filters.paymentReciveStatus">
+      <mat-option *ngFor="let status of paymentStatuses" [value]="status">{{ status }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+
+  <button mat-raised-button class="create-user-btn" color="accent" (click)="onCreateUser()">
+    <mat-icon>person_add</mat-icon> Create User
+  </button>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Columns -->
+  <ng-container matColumnDef="customerName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.customerName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="mobileNo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile No</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.mobileNo }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="emailId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Email ID</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.emailId }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="paymentMode">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Payment Mode</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.paymentMode }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="paymentReciveStatus">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Payment Status</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.paymentReciveStatus }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="paymentAmount">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Payment Amount</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.paymentAmount | currency }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="paymentReciveDate">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Payment Date</mat-header-cell>
+    <mat-cell *matCellDef="let row">{{ row.paymentReciveDate | date }}</mat-cell>
+  </ng-container>
+
+  <!-- Actions Column with proper alignment -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="mat-column-actions">
+      <button mat-icon-button (click)="onEdit(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDelete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

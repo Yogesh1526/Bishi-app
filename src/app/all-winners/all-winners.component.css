@@ -1,0 +1,178 @@
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f3f3f3; /* Soft gray background */
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  /* Winner's Header */
+  .winners-header {
+    background-color: darkgoldenrod; /* Dark background */
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 5px solid #fbbd02; /* Golden accent */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .winners-header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .winners-header p {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Current Winner Section */
+  .current-winner {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #ffb74d; /* Warm orange */
+    border-radius: 16px;
+    padding: 50px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .current-winner .winner-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* animation: rotateTrophy 2s linear infinite; Trophy animation */
+  }
+  
+  .current-winner .winner-info {
+    flex: 1;
+    margin-left: 40px;
+  }
+  
+  .current-winner .winner-name {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .current-winner .winner-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Animation for Trophy */
+  @keyframes rotateTrophy {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* All Winners List Section */
+  .winners-list {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .winners-list-title {
+    text-align: center;
+    font-size: 32px;
+    color: #fbbd02;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .winners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  .winner-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .winner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .winner-card .winner-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+  
+  .winner-card .winner-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .winner-card .winner-description {
+    font-size: 14px;
+    color: #757575;
+  }
+  
+  /* Footer Section */
+  .winners-footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .winners-footer a {
+    color: #fbbd02;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .winners-footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .current-winner .winner-name {
+      font-size: 28px;
+    }
+  
+    .current-winner .winner-description {
+      font-size: 16px;
+    }
+  
+    .winner-card .winner-name {
+      font-size: 20px;
+    }
+  
+    .winner-card .winner-description {
+      font-size: 12px;
+    }
+  }
+  

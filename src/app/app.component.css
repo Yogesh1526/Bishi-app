@@ -1,0 +1,101 @@
+
+.app{
+    height: 100%;
+    width: 100%;
+  }
+  .sidenav{
+    background: #fff;
+    box-shadow: 5px 0 5px -5px #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 240px;
+    padding: 0 15px;
+    transform: translateX(-250px);
+    transition: transform .5s;
+    z-index: 3;
+  }
+  
+  .open{
+     transform: translateX(0);
+  }
+  
+  main{
+    background: inherit;
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .backdrop{
+    display: none;
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 2;
+  }
+  
+  .show{
+    display: block;
+  }
+  
+  mat-icon{
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  section{
+    padding: 84px 20px 20px 20px;
+    flex: 1;
+  }
+  
+  mat-toolbar{
+    align-items: stretch;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    background-color: coral;
+    color: white;
+  }
+
+  .brand{
+    align-items: center;
+    display: flex;
+  }
+  
+  .toggleMenu{
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-toolbar .navbar-menu{
+    display: none;
+    align-items: stretch;
+  }
+  
+  .navbar-link{
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    padding: 0 15px;
+  }
+  
+  .navbar-link:hover{
+    background: #424242;
+  }
+  
+  
+  @media( min-width: 960px){
+    .toggleMenu{
+      display: none;
+    }
+  
+    mat-toolbar .navbar-menu{
+      display: flex;
+    }
+  }

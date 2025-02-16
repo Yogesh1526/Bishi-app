@@ -1,0 +1,120 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-card class="full-width-card">
+      <mat-card-title style="text-align: center;">
+        Main Business
+      </mat-card-title>
+      <mat-card-content>
+        <div class="form-container">
+          <!-- Form Fields -->
+          <mat-form-field appearance="outline">
+            <mat-label>Customer Name</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput formControlName="customerName" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile No</mat-label>
+            <mat-icon matPrefix>phone</mat-icon>
+            <input matInput formControlName="mobileNo" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Email ID</mat-label>
+            <mat-icon matPrefix>email</mat-icon>
+            <input matInput formControlName="emailId" type="email" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Aadhaar Card No</mat-label>
+            <mat-icon matPrefix>credit_card</mat-icon>
+            <input matInput formControlName="addharCardNo" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>PAN No</mat-label>
+            <mat-icon matPrefix>badge</mat-icon>
+            <input matInput formControlName="panNo" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Guarantor Name</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput formControlName="guarantorName" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Guarantor Mobile No</mat-label>
+            <mat-icon matPrefix>phone</mat-icon>
+            <input matInput formControlName="guarantorMobileNumber" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Amount Needed</mat-label>
+            <mat-icon matPrefix>attach_money</mat-icon>
+            <input matInput formControlName="amountNeeded" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Interest Rate (%)</mat-label>
+            <mat-icon matPrefix>percent</mat-icon>
+            <input matInput formControlName="intrestRate" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Payment Receive Date</mat-label>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <input matInput formControlName="paymentReciveDate" [matDatepicker]="picker1" required />
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Payment Mode</mat-label>
+            <mat-icon matPrefix>payments</mat-icon>
+            <mat-select formControlName="paymentMode">
+              <mat-option *ngFor="let mode of paymentModes" [value]="mode">{{ mode }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Repayment Date</mat-label>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <input matInput formControlName="rePaymentDate" [matDatepicker]="picker2" required />
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Total Repayment Amount</mat-label>
+            <mat-icon matPrefix>money</mat-icon>
+            <input matInput formControlName="totalRepaymentAmount" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Interest Amount Paid</mat-label>
+            <mat-icon matPrefix>payments</mat-icon>
+            <input matInput formControlName="intrestAmountPaid" type="number" required />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Payment Receive Status</mat-label>
+            <mat-icon matPrefix>check_circle</mat-icon>
+            <mat-select formControlName="paymentReciveStatus">
+              <mat-option *ngFor="let status of paymentStatuses" [value]="status">{{ status }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Note</mat-label>
+            <mat-icon matPrefix>notes</mat-icon>
+            <textarea matInput formControlName="note"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <button mat-raised-button color="primary" class="full-width" type="submit">
+          <mat-icon>send</mat-icon> Submit
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

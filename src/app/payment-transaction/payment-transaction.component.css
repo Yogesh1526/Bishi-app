@@ -1,0 +1,61 @@
+.payment-transaction-container {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    /* background-color: #fafafa; */
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    .filter-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+  
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: space-between;
+      }
+  
+      .filter-field {
+        width: 22%; /* Adjusting to fit the screen size */
+      }
+  
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #c2185b;
+        color: white;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+  
+      button:hover {
+        background-color: #9c1c4b;
+      }
+    }
+  
+    .transaction-table {
+      .mat-header-row {
+        background-color: #c2185b;
+        color: white;
+      }
+  
+      .mat-row {
+        transition: background-color 0.2s ease;
+      }
+  
+      .mat-cell, .mat-header-cell {
+        padding: 12px;
+      }
+  
+      .highlighted-row {
+        background-color: #ffeb3b;
+      }
+    }
+  }
+  

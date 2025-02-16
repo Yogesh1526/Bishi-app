@@ -1,0 +1,101 @@
+<div class="payment-transaction-container">
+    <!-- Filter Section -->
+    <div class="filter-container">
+      <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit()">
+        <div class="filter-row">
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Date</mat-label>
+            <input matInput formControlName="date" type="date" />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Payment Status</mat-label>
+            <mat-select formControlName="paymentStatus">
+              <mat-option value="Completed">Completed</mat-option>
+              <mat-option value="Pending">Pending</mat-option>
+              <mat-option value="Failed">Failed</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Mode</mat-label>
+            <mat-select formControlName="mode">
+              <mat-option value="Credit">Credit</mat-option>
+              <mat-option value="Debit">Debit</mat-option>
+              <mat-option value="Cash">Cash</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Group</mat-label>
+            <mat-select formControlName="group">
+              <mat-option value="1000">1000</mat-option>
+              <mat-option value="2000">2000</mat-option>
+              <mat-option value="5000">5000</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Payment Transactions Table -->
+    <div class="transaction-table">
+      <mat-table [dataSource]="filteredTransactions" matSort>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.name }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="mobile">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.mobile }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.address }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="paymentStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Payment Status</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.paymentStatus }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="mode">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Mode</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.mode }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="cash">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Cash</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">{{ transaction.cash | currency }}</mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Active/Inactive</mat-header-cell>
+          <mat-cell *matCellDef="let transaction">
+            <button mat-raised-button [color]="transaction.isActive ? 'accent' : 'warn'">
+              {{ transaction.isActive ? 'Active' : 'Inactive' }}
+            </button>
+          </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="winner">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Winner</mat-header-cell>
+          <mat-cell *matCellDef="let transaction" [ngClass]="{'highlighted-row': transaction.isWinner}">
+            {{ transaction.isWinner ? 'Yes' : 'No' }}
+          </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+  
+      <!-- Pagination -->
+      <mat-paginator [length]="filteredTransactions.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
+  

@@ -1,0 +1,88 @@
+/* Make sure mat-form-field takes full width */
+mat-form-field.full-width {
+    width: 100%;
+  }
+  
+  /* Placeholder color */
+  mat-form-field.full-width .mat-form-field-infix .mat-input-element::placeholder {
+    color: #9e9e9e; /* Placeholder text color */
+  }
+  
+  /* Border color */
+  mat-form-field.full-width .mat-form-field-outline .mat-form-field-outline-thick {
+    border-color: #FF5722 !important; /* Border color */
+  }
+  
+  /* Border color on focus */
+  mat-form-field.full-width .mat-form-field-outline.mat-focused .mat-form-field-outline-thick {
+    border-color: #FF5722 !important; /* Border color on focus */
+  }
+  
+  /* Label color */
+  mat-form-field.full-width .mat-form-field-label {
+    color: #FF5722; /* Label color */
+  }
+  
+  /* Label color on focus */
+  mat-form-field.full-width .mat-form-field-label.mat-focused {
+    color: #FF5722; /* Label color on focus */
+  }
+  
+  /* Input text color */
+  mat-form-field.full-width .mat-input-element {
+    color: #000000; /* Input text color */
+  }
+  
+  ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    width: 100% !important;
+    border: 1px solid black !important;
+    border-radius: 4px; /* Optional: Adds border radius */
+  }
+  
+  ::ng-deep .mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+    cursor: inherit;
+    color: brown !important; /* Ensures the label color is applied */
+  }
+  
+  ::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-text-field-wrapper {
+    border-color: #FF5722 !important; /* Custom border color on focus */
+  }
+  
+  ::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-floating-label.mdc-floating-label {
+    color: #FF5722 !important; /* Custom label color on focus */
+  }
+  
+  ::ng-deep .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+    color: #9e9e9e !important; /* Custom placeholder color */
+  }
+  
+  ::ng-deep .mat-mdc-form-field .mat-mdc-input-element {
+    color: #000000 !important; /* Custom text color */
+  }
+  
+  /* Make the table container scrollable on small screens */
+@media (max-width: 600px) {
+    .table-container {
+      overflow-x: auto;
+    }
+  
+    .mat-table {
+      min-width: 600px; /* Ensure the table doesn't shrink too much */
+    }
+  
+    .mat-header-cell, .mat-cell {
+      white-space: nowrap; /* Prevent text from breaking */
+    }
+  
+    /* Optionally, make columns stack on mobile */
+    .mat-header-cell, .mat-cell {
+      display: block;
+      width: 100%;
+    }
+  
+    .mat-column-id, .mat-column-name, .mat-column-age, .mat-column-edit, .mat-column-delete {
+      width: 100%;
+      display: block;
+    }
+  }
+  

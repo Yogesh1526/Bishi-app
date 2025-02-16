@@ -1,0 +1,17 @@
+<ul>
+    <li class="title">
+      <h2>Host Admin</h2>
+      <span (click)="closeEventEmitter()" style="cursor: pointer;">
+        <mat-icon>clear</mat-icon>
+      </span>
+    </li>
+    <li *ngFor="let link of links" routerLinkActive="active" (click)="navigateTo(link.path)" [routerLinkActiveOptions]="{exact: true}">
+      <mat-icon>{{link.icon}}</mat-icon><a>{{link.name}}</a>
+    </li>
+    <li>
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+      <span>Exit</span>
+    </li>
+  </ul>
