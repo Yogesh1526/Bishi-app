@@ -12,6 +12,10 @@ import { GrpdetailsComponent } from './grpdetails/grpdetails.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AllWinnersComponent } from './all-winners/all-winners.component';
+import { GroupLayoutComponent } from './group-layout/group-layout.component';
+import { GroupTransationComponent } from './group-transation/group-transation.component';
+import { MainBusinessLayoutComponent } from './main-business-layout/main-business-layout.component';
+import { LoanApplicantComponent } from './loan-applicant/loan-applicant.component';
 
 const routes: Routes = [
   {
@@ -56,12 +60,28 @@ const routes: Routes = [
     component: UserdetailsComponent
   },
   {
+    path: 'transaction-group/:id',
+    component : GroupTransationComponent
+  },
+  {
     path : 'about',
     component: AboutusComponent
   },
   {
     path : 'winner',
     component: AllWinnersComponent
+  },
+  {
+    path: 'group-transation',
+    component:GroupLayoutComponent
+  },
+  {
+    path : 'main-business',
+    component: MainBusinessLayoutComponent 
+  },
+  {
+    path: 'loanapplicant/:id',
+    component:LoanApplicantComponent
   },
   {
     path: '**',

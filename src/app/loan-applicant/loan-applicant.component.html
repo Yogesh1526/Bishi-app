@@ -1,0 +1,138 @@
+<div class="loan-applicant-container">
+  <mat-card>
+    <mat-card-title class="card-title">
+      <button class="back-button" (click)="goBack()" aria-label="Back">
+        <img src="assets/back_button.png" alt="Back" class="back-icon">
+      </button>
+      <span class="title-text">{{ isEditMode ? 'Edit Loan Applicant' : 'Create Loan Applicant' }}</span>
+    </mat-card-title>
+
+    <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <!-- Row 1 -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Customer Name</mat-label>
+            <input matInput formControlName="customerName" />
+            <mat-error *ngIf="businessForm.get('customerName')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Mobile No</mat-label>
+            <input matInput formControlName="mobileNo" type="tel" />
+            <mat-error *ngIf="businessForm.get('mobileNo')?.hasError('required')">Required</mat-error>
+            <mat-error *ngIf="businessForm.get('mobileNo')?.hasError('pattern')">Invalid mobile number</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Email ID</mat-label>
+            <input matInput type="email" formControlName="emailId" />
+            <mat-error *ngIf="businessForm.get('emailId')?.hasError('required')">Required</mat-error>
+            <mat-error *ngIf="businessForm.get('emailId')?.hasError('email')">Invalid email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Aadhar Card No</mat-label>
+            <input matInput type="text" formControlName="addharCardNo" />
+            <mat-error *ngIf="businessForm.get('addharCardNo')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>PAN No</mat-label>
+            <input matInput formControlName="panNo" />
+            <mat-error *ngIf="businessForm.get('panNo')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Guarantor Name</mat-label>
+            <input matInput formControlName="guarantorName" />
+            <mat-error *ngIf="businessForm.get('guarantorName')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Guarantor Mobile</mat-label>
+            <input matInput formControlName="guarantorMobileNumber" />
+            <mat-error *ngIf="businessForm.get('guarantorMobileNumber')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Amount Needed</mat-label>
+            <input matInput type="number" formControlName="amountNeeded" />
+            <mat-error *ngIf="businessForm.get('amountNeeded')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Payment Mode</mat-label>
+            <mat-select formControlName="paymentMode">
+              <mat-option value="Cash">Cash</mat-option>
+              <mat-option value="Bank Transfer">Bank Transfer</mat-option>
+            </mat-select>
+            <mat-error *ngIf="businessForm.get('paymentMode')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Re-Payment Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="paymentReceiveDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="businessForm.get('paymentReceiveDate')?.invalid">Required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Interest Section -->
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="third-width">
+            <mat-label>Principal Amount (₹)</mat-label>
+            <input matInput type="number" formControlName="principalAmount" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="third-width">
+            <mat-label>Annual Rate (%)</mat-label>
+            <input matInput type="number" formControlName="annualRate" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="third-width">
+            <mat-label>Period Value</mat-label>
+            <input matInput type="number" formControlName="periodValue" />
+          </mat-form-field>
+        </div>
+
+        <mat-card class="summary-card" *ngIf="principalAmount">
+          <div class="summary-item">
+            <span class="label">Simple Interest:</span>
+            <span class="value">₹ {{ simpleInterest | number: '1.2-2' }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Principal Amount:</span>
+            <span class="value">₹ {{ principalAmount | number: '1.2-2' }}</span>
+          </div>
+          <div class="summary-item total">
+            <span class="label">Total Value (Simple):</span>
+            <span class="value">₹ {{ totalSimple | number: '1.2-2' }}</span>
+          </div>
+        </mat-card>
+      
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button class="full-width" mat-raised-button color="accent" type="submit" [disabled]="businessForm.invalid">
+          {{ isEditMode ? 'Update' : 'Create' }} Loan Applicant
+        </button>
+        <!-- Add a button for PDF generation -->
+        <button mat-raised-button color="primary" (click)="generatePDF()">Download PDF</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

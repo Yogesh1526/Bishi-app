@@ -33,10 +33,11 @@ export class CreateGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.groupId = this.route.snapshot.paramMap.get('id');
+    const groupIdNumber = Number(this.groupId);  // Or use parseInt(this.groupId, 10);
 
-    if (this.groupId) {
+    if (groupIdNumber> 0) {
       this.isEditMode = true;
-      this.loadGroupData(this.groupId);
+      this.loadGroupData(groupIdNumber);
     } else {
       this.addCustomer(); // Add at least one customer by default if it's in create mode
     }
@@ -57,7 +58,7 @@ export class CreateGroupComponent implements OnInit {
     this.customerDto.removeAt(index);
   }
 
-  loadGroupData(groupId: string): void {
+  loadGroupData(groupId: any): void {
     this.apiService.get(`group/getbygid/${groupId}`).subscribe((data: any) => {
       // Assume that data is in the format that matches the form controls
       this.groupForm.patchValue({

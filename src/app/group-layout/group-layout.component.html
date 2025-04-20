@@ -1,0 +1,8 @@
+<div class="dashboard-container">
+    <!-- Iterate through dashboardCards and create cards for each group -->
+    <mat-card *ngFor="let card of dashboardCards" class="dashboard-card" (click)="navigateTo(card)">
+      <mat-icon class="dashboard-icon">{{ card.icon }}</mat-icon>
+      <h3 class="card-title">{{ card.title }}</h3>
+    </mat-card>
+  </div>
+  

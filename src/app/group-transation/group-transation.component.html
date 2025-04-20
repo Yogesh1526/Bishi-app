@@ -1,0 +1,84 @@
+<div class="table-container">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter by name, payment status..." />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Customer Name Column -->
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+      <td mat-cell *matCellDef="let element" [class.winner-status]="isWinnerStatus(element.winnerStatus)">
+        <span>{{element.customerName}}</span>
+      </td>
+    </ng-container>
+
+    <!-- Payment Amount Column -->
+    <ng-container matColumnDef="paymentAmount">
+      <th mat-header-cell *matHeaderCellDef> Payment Amount </th>
+      <td mat-cell *matCellDef="let element" [class.winner-status]="isWinnerStatus(element.winnerStatus)">
+        <span>{{element.paymentAmount}}</span>
+      </td>
+    </ng-container>
+
+    <!-- Payment Mode Column -->
+    <ng-container matColumnDef="paymentMode">
+      <th mat-header-cell *matHeaderCellDef> Payment Mode </th>
+      <td mat-cell *matCellDef="let element" [class.winner-status]="isWinnerStatus(element.winnerStatus)">
+        <span>{{element.paymentMode}}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef> Note </th>
+      <td mat-cell *matCellDef="let element" [class.winner-status]="isWinnerStatus(element.winnerStatus)">
+        <span>{{element.note}}</span>
+      </td>
+    </ng-container>
+    
+    
+    <!-- Payment Received Status Column -->
+    <ng-container matColumnDef="paymentReciveStatus">
+      <th mat-header-cell *matHeaderCellDef> Payment Received Status </th>
+      <td mat-cell *matCellDef="let element" [class.winner-status]="isWinnerStatus(element.winnerStatus)">
+        <span>{{element.paymentReciveStatus}}</span>
+      </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <button *ngIf="!isWinnerStatus(element.winnerStatus)" mat-button (click)="toggleWinnerStatus(element)">
+          Set as Winner
+        </button>
+        <span *ngIf="isWinnerStatus(element.winnerStatus)">Winner</span>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onEdit(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      
+      </td>
+    </ng-container>
+
+
+    <!-- Table Header and Row Definition -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'winner-status': isWinnerStatus(row.winnerStatus)}"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

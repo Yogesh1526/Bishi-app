@@ -15,14 +15,14 @@ export class DashboardComponent implements OnInit {
   dashboardCards = [
     { title: 'User Module', icon: 'person_add', route: '/user-details' },
     { title: 'Group Registration', icon: 'group', route: '/group-details' },
-    { title: 'Transaction', icon: 'paid', route: '/transactions' },
+    { title: 'Transaction', icon: 'paid', route: '/group-transation' },
     { title: 'Balance Sheet', icon: 'account_balance', route: '/balance-sheet' },
     { title: 'About', icon: 'info', route: '/about' },
     { title: 'New Plans', icon: 'post_add', route: '/new-plans' },
     { title: 'All Winners', icon: 'emoji_events', route: '/winner' },
     { title: 'User Feedbacks', icon: 'feedback', route: '/user-feedbacks' },
     { title: 'User Details', icon: 'info', route: '/user-info-details' },
-
+    { title: 'Main Business Module', icon: 'money', route: '/main-business' },
 
   ];
 

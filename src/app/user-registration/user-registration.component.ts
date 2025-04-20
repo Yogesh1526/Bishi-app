@@ -14,7 +14,7 @@ import { ToastService } from '../services/toast.service';
 export class UserRegistrationComponent implements OnInit {
   userForm!: FormGroup;
   groups: any[] = []; // Store fetched groups
-  userId: string | null = null; // Store ID if editing
+  userId:  any; // Store ID if editing
 
   constructor(
     private fb: FormBuilder,
@@ -58,7 +58,8 @@ export class UserRegistrationComponent implements OnInit {
       rePaymentDate: ['', Validators.required],
       note: [''],
       paymentAmount: ['', Validators.required],
-      paymentReciveStatus: ['', Validators.required]
+      paymentReciveStatus: ['', Validators.required],
+      winnerStatus : ['']
     });
   }
 
@@ -94,7 +95,12 @@ export class UserRegistrationComponent implements OnInit {
             note: userData.note,
             paymentAmount: userData.paymentAmount,
             paymentReciveStatus: userData.paymentReciveStatus,
-            group: userData.groupDto?.length ? userData.groupDto[0].gid : ''
+            group: userData.groupsDto?.length ? userData.groupsDto[0].gid : '',
+            whatsapp : userData.whatsAppNumber,
+            reference : userData.refrenceName,
+            referenceContact : userData.refrenceMobileNumber,
+            address: userData.address,
+            winnerStatus : userData.winnerStatus
           });
         }
       },
@@ -107,6 +113,7 @@ export class UserRegistrationComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
   // Submit form (Create or Update)
   onSubmit(): void {
     if (this.userForm.invalid) {
@@ -132,16 +139,42 @@ export class UserRegistrationComponent implements OnInit {
       isActive: true,
       paymentAmount: formData.paymentAmount,
       paymentReciveStatus: formData.paymentReciveStatus,
-      groupsDto: formData.group ? [{ gid: formData.group }] : []
+      groupsDto: formData.group ? [{ gid: formData.group }] : [],
+      whatsAppNumber : formData.whatsapp,
+      refrenceName : formData.reference,
+      refrenceMobileNumber : formData.referenceContact,
+      address: formData.address
     };
 
-    if (this.userId) {
+    if (Number(this.userId) > 0) {
       // Update existing user
-      this.apiService.post(`customer/update/${this.userId}`, payload).subscribe(
+      const payload = {
+        id: this.userId,
+        customerName: formData.name,
+        mobileNo: formData.mobile,
+        emailId: formData.emailId,
+        addharCardNo: formData.aadhar,
+        panNo: formData.pan,
+        paymentReciveDate: formData.paymentReciveDate,
+        paymentMode: formData.paymentMode,
+        rePaymentDate: formData.rePaymentDate,
+        note: formData.note,
+        winnerStatus: formData.winnerStatus,
+        isActive: true,
+        paymentAmount: formData.paymentAmount,
+        paymentReciveStatus: formData.paymentReciveStatus,
+        groupsDto: formData.group ? [{ gid: formData.group }] : [],
+        whatsAppNumber : formData.whatsapp,
+        refrenceName : formData.reference,
+        refrenceMobileNumber : formData.referenceContact,
+        address: formData.address
+      };
+
+      this.apiService.post(`customer/update`, payload).subscribe(
         (response) => {
           console.log('User updated successfully:', response);
           this.toastService.show('User updated successfully!', 'Got it', 4000);
-          this.router.navigate(['/user-info-details']);
+          this.router.navigate(['/user-details']);
 
         },
         (error) => {
@@ -156,7 +189,7 @@ export class UserRegistrationComponent implements OnInit {
         (response) => {
           this.toastService.show('Customer created successfully!', 'Got it', 4000);
           console.log('Customer created successfully:', response);
-          this.router.navigate(['/user-info-details']);
+          this.router.navigate(['/user-details']);
 
         },
         (error) => {

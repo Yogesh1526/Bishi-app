@@ -1,51 +1,41 @@
-.group-creation-container {
-    max-width: 100%;
-    margin: auto;
-    padding: 16px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .full-width {
-    width: 100%;
-    margin-bottom: 16px;
-  }
-  
-  .customer-array {
-    margin-top: 16px;
-  }
-  
-  .customer-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  mat-card {
-    margin: 16px 0;
-    padding: 24px;
-    border-radius: 8px;
-    color: white;
-  }
-  
-  mat-card-title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  mat-card-actions {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  button {
-    margin-top: 8px;
-  }
-  
-  /* Card Title Section */
+.loan-applicant-container {
+  max-width: 100%;
+  margin: auto;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-card {
+  margin: 16px 0;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin-top: 8px;
+}
+
+/* Card Title Section */
 .card-title {
   display: flex;
   justify-content: center;
@@ -66,4 +56,52 @@
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+/* Form Fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Label and Input Fields */
+mat-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+mat-input, mat-select {
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* Error Messages */
+mat-error {
+  font-size: 12px;
+  color: #f44336; /* Red color for error text */
+}
+
+/* Buttons */
+button[mat-raised-button] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  background-color: #ff7043;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button[mat-raised-button]:hover {
+  background-color: #ff5722;
+}
+
+/* Input Fields (focus and hover effects) */
+mat-input:focus, mat-select:focus {
+  border: 1px solid #ff7043;
+}
+
+mat-input:hover, mat-select:hover {
+  border: 1px solid #ff7043;
 }

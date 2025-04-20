@@ -21,7 +21,10 @@ import { GrpdetailsComponent } from './grpdetails/grpdetails.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AllWinnersComponent } from './all-winners/all-winners.component';
-import { HeaderComponent } from './layout/header/header.component';
+import { GroupLayoutComponent } from './group-layout/group-layout.component';
+import { GroupTransationComponent } from './group-transation/group-transation.component';
+import { MainBusinessLayoutComponent } from './main-business-layout/main-business-layout.component';
+import { LoanApplicantComponent } from './loan-applicant/loan-applicant.component';
 
 
 
@@ -42,7 +45,10 @@ import { HeaderComponent } from './layout/header/header.component';
     UserdetailsComponent,
     AboutusComponent,
     AllWinnersComponent,
-    HeaderComponent
+    GroupLayoutComponent,
+    GroupTransationComponent,
+    MainBusinessLayoutComponent,
+    LoanApplicantComponent
   ],
   imports: [
     BrowserModule,FormsModule,CommonModule,HttpClientModule,

@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CommonApiService {
-  private apiUrl = 'https://b2d1-2409-40c2-1051-1d6-4b4-d58e-d8af-46d7.ngrok-free.app/uam-service/'; // Base URL of your API
+  private apiUrl = 'https://426d-2409-40c2-1243-5a30-1041-aa45-90bf-763e.ngrok-free.app/uam-service/'; // Base URL of your API
 
   // Default headers with 'ngrok-skip-browser-warning'
   private defaultHeaders = new HttpHeaders().set('ngrok-skip-browser-warning', 'true');
@@ -95,4 +95,30 @@ export class CommonApiService {
 
     return this.http.get<any>(`${this.apiUrl}${endpoint}`, { headers: this.defaultHeaders, params });
   }
+
+  getCustomerList(endpoint: string, id:any): Observable<any> {
+    const params = new HttpParams();
+    return this.http.get<any>(`${this.apiUrl}${endpoint}/${id}`, { headers: this.defaultHeaders, params }); // Include headers here
+  }
+
+  updateWinnerStatus(customerId: number, groupId: string): Observable<any> {
+    const url = `${this.apiUrl}customer/updateWinner`; // API endpoint
+      const params = new HttpParams()
+      .set('customerId', customerId.toString())
+      .set('GroupId', groupId);
+    return this.http.post<any>(url, null, { params }); // `null` as body since it's managed by query params
+  }
+
+
+  getBusinessCustomers(pageSize: number = 100, pageNumber: number = 0, sort: string = '', customerName: string = ''): Observable<any> {
+    const url = `${this.apiUrl}mainBusiness/findAll?pageSize=${pageSize}&pageNumber=${pageNumber}&sort=${sort}&customerName=${customerName}`;
+    return this.http.get<any>(url, { headers: this.defaultHeaders });
+  }
+
+  // Delete a Business Customer (Assuming you have a delete API for customer)
+  // delete(customerId: string): Observable<any> {
+  //   const url = `${this.apiUrl}customer/delete/${customerId}`;
+  //   return this.http.delete<any>(url);
+  // }
+
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="userForm">
   <mat-card>
     <mat-card-title class="card-title">
       <button class="back-button" (click)="goBack()" aria-label="Back">
@@ -9,138 +9,188 @@
     
     <mat-card-content>
       <div class="form-container">
-        <!-- Name -->
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name" placeholder="Enter full name" required>
-          <mat-error *ngIf="userForm.get('name')?.invalid">Name is required</mat-error>
-        </mat-form-field>
+        <!-- Name and Mobile in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" placeholder="Enter full name" required>
+              <mat-error *ngIf="userForm.get('name')?.invalid">Name is required</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Mobile -->
-        <mat-form-field appearance="outline">
-          <mat-label>Mobile</mat-label>
-          <input matInput formControlName="mobile" placeholder="Enter 10-digit mobile number">
-          <mat-error *ngIf="userForm.get('mobile')?.invalid">Invalid mobile number</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile</mat-label>
+              <input matInput formControlName="mobile" placeholder="Enter 10-digit mobile number">
+              <mat-error *ngIf="userForm.get('mobile')?.invalid">Invalid mobile number</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- WhatsApp -->
-        <mat-form-field appearance="outline">
-          <mat-label>WhatsApp</mat-label>
-          <input matInput formControlName="whatsapp" placeholder="Enter WhatsApp number">
-          <mat-error *ngIf="userForm.get('whatsapp')?.invalid">Invalid number</mat-error>
-        </mat-form-field>
+        <!-- WhatsApp and Email in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>WhatsApp</mat-label>
+              <input matInput formControlName="whatsapp" placeholder="Enter WhatsApp number">
+              <mat-error *ngIf="userForm.get('whatsapp')?.invalid">Invalid number</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Email -->
-        <mat-form-field appearance="outline">
-          <mat-label>Email ID</mat-label>
-          <input matInput type="email" formControlName="emailId" placeholder="Enter email">
-          <mat-error *ngIf="userForm.get('emailId')?.invalid">Invalid email</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Email ID</mat-label>
+              <input matInput type="email" formControlName="emailId" placeholder="Enter email">
+              <mat-error *ngIf="userForm.get('emailId')?.invalid">Invalid email</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- PAN -->
-        <mat-form-field appearance="outline">
-          <mat-label>PAN</mat-label>
-          <input matInput formControlName="pan" placeholder="Enter PAN">
-          <mat-error *ngIf="userForm.get('pan')?.invalid">Invalid PAN format</mat-error>
-        </mat-form-field>
+        <!-- PAN and Aadhar in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>PAN</mat-label>
+              <input matInput formControlName="pan" placeholder="Enter PAN">
+              <mat-error *ngIf="userForm.get('pan')?.invalid">Invalid PAN format</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Aadhar -->
-        <mat-form-field appearance="outline">
-          <mat-label>Aadhar</mat-label>
-          <input matInput formControlName="aadhar" placeholder="Enter 12-digit Aadhar number">
-          <mat-error *ngIf="userForm.get('aadhar')?.invalid">Invalid Aadhar number</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Aadhar</mat-label>
+              <input matInput formControlName="aadhar" placeholder="Enter 12-digit Aadhar number">
+              <mat-error *ngIf="userForm.get('aadhar')?.invalid">Invalid Aadhar number</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- Address -->
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <textarea matInput formControlName="address" placeholder="Enter full address"></textarea>
-          <mat-error *ngIf="userForm.get('address')?.invalid">Address is required</mat-error>
-        </mat-form-field>
+        <!-- Address and Reference in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <textarea matInput formControlName="address" placeholder="Enter full address"></textarea>
+              <mat-error *ngIf="userForm.get('address')?.invalid">Address is required</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Reference -->
-        <mat-form-field appearance="outline">
-          <mat-label>Reference</mat-label>
-          <input matInput formControlName="reference" placeholder="Enter reference name">
-          <mat-error *ngIf="userForm.get('reference')?.invalid">Reference is required</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Reference</mat-label>
+              <input matInput formControlName="reference" placeholder="Enter reference name">
+              <mat-error *ngIf="userForm.get('reference')?.invalid">Reference is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- Reference Contact -->
-        <mat-form-field appearance="outline">
-          <mat-label>Reference Contact</mat-label>
-          <input matInput formControlName="referenceContact" placeholder="Enter reference contact number">
-          <mat-error *ngIf="userForm.get('referenceContact')?.invalid">Invalid number</mat-error>
-        </mat-form-field>
+        <!-- Reference Contact and Group in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Reference Contact</mat-label>
+              <input matInput formControlName="referenceContact" placeholder="Enter reference contact number">
+              <mat-error *ngIf="userForm.get('referenceContact')?.invalid">Invalid number</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Group -->
-        <mat-form-field appearance="outline">
-          <mat-label>Group</mat-label>
-          <mat-select formControlName="group">
-            <mat-option *ngFor="let g of groups" [value]="g.gid">{{ g.groupName }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="userForm.get('group')?.invalid">Group is required</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Group</mat-label>
+              <mat-select formControlName="group">
+                <mat-option *ngFor="let g of groups" [value]="g.gid">{{ g.groupName }}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('group')?.invalid">Group is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- Payment Received Date -->
-        <mat-form-field appearance="outline">
-          <mat-label>Payment Received Date</mat-label>
-          <input matInput [matDatepicker]="picker1" formControlName="paymentReciveDate">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-          <mat-error *ngIf="userForm.get('paymentReciveDate')?.invalid">Required</mat-error>
-        </mat-form-field>
+        <!-- Payment Received Date and Mode in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Received Date</mat-label>
+              <input matInput [matDatepicker]="picker1" formControlName="paymentReciveDate">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+              <mat-error *ngIf="userForm.get('paymentReciveDate')?.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Payment Mode -->
-        <mat-form-field appearance="outline">
-          <mat-label>Payment Mode</mat-label>
-          <mat-select formControlName="paymentMode">
-            <mat-option value="Credit Card">Credit Card</mat-option>
-            <mat-option value="Debit Card">Debit Card</mat-option>
-            <mat-option value="Net Banking">Net Banking</mat-option>
-            <mat-option value="UPI">UPI</mat-option>
-            <mat-option value="Cash">Cash</mat-option>
-          </mat-select>
-          <mat-error *ngIf="userForm.get('paymentMode')?.invalid">Required</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Mode</mat-label>
+              <mat-select formControlName="paymentMode">
+                <mat-option value="Credit Card">Credit Card</mat-option>
+                <mat-option value="Debit Card">Debit Card</mat-option>
+                <mat-option value="Net Banking">Net Banking</mat-option>
+                <mat-option value="UPI">UPI</mat-option>
+                <mat-option value="Cash">Cash</mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('paymentMode')?.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- Re-Payment Date -->
-        <mat-form-field appearance="outline">
-          <mat-label>Re-Payment Date</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="rePaymentDate">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-          <mat-error *ngIf="userForm.get('rePaymentDate')?.invalid">Required</mat-error>
-        </mat-form-field>
+        <!-- Re-Payment Date and Amount in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Re-Payment Date</mat-label>
+              <input matInput [matDatepicker]="picker2" formControlName="rePaymentDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+              <mat-error *ngIf="userForm.get('rePaymentDate')?.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Payment Amount -->
-        <mat-form-field appearance="outline">
-          <mat-label>Payment Amount</mat-label>
-          <input matInput formControlName="paymentAmount" placeholder="Enter amount">
-          <mat-error *ngIf="userForm.get('paymentAmount')?.invalid">Required</mat-error>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Amount</mat-label>
+              <input matInput formControlName="paymentAmount" placeholder="Enter amount">
+              <mat-error *ngIf="userForm.get('paymentAmount')?.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-        <!-- Payment Received Status -->
-        <mat-form-field appearance="outline">
-          <mat-label>Payment Received Status</mat-label>
-          <mat-select formControlName="paymentReciveStatus">
-            <mat-option value="Paid">Paid</mat-option>
-            <mat-option value="Pending">Pending</mat-option>
-          </mat-select>
-          <mat-error *ngIf="userForm.get('paymentReciveStatus')?.invalid">Required</mat-error>
-        </mat-form-field>
+        <!-- Payment Received Status and Note in one row -->
+        <div class="form-row">
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Payment Received Status</mat-label>
+              <mat-select formControlName="paymentReciveStatus">
+                <mat-option value="Paid">Paid</mat-option>
+                <mat-option value="Pending">Pending</mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('paymentReciveStatus')?.invalid">Required</mat-error>
+            </mat-form-field>
+          </div>
 
-        <!-- Note -->
-        <mat-form-field appearance="outline">
-          <mat-label>Note</mat-label>
-          <textarea matInput formControlName="note" placeholder="Optional notes"></textarea>
-        </mat-form-field>
+          <div class="form-column">
+            <mat-form-field appearance="outline">
+              <mat-label>Note</mat-label>
+              <textarea matInput formControlName="note" placeholder="Optional notes"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row" *ngIf="userId > 1">
+          <mat-form-field appearance="outline">
+            <mat-label>Winner Status</mat-label>
+            <mat-select formControlName="winnerStatus">
+              <mat-option value="Yes">Yes</mat-option>
+              <mat-option value="No">No</mat-option>
+            </mat-select>
+            <!-- <mat-error *ngIf="userForm.get('winnerStatus')?.invalid">Required</mat-error> -->
+          </mat-form-field>
+        </div>
       </div>
     </mat-card-content>
+
     <mat-card-actions>
-      <button mat-raised-button class="full-width" color="accent" type="submit" [disabled]="userForm.invalid">
+      <button mat-raised-button class="full-width" color="accent" (click)="onSubmit()" type="submit" [disabled]="userForm.invalid">
         Submit
       </button>
-      <!-- <button mat-button type="reset" (click)="userForm.reset()">Reset</button> -->
     </mat-card-actions>
   </mat-card>
 </form>
