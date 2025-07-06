@@ -18,6 +18,7 @@ export class LoanApplicantComponent implements OnInit {
   simpleInterest: number = 0;
   totalSimple: number = 0;
   principalAmount: number = 0;
+  emiAmount: any;
 
   constructor(private fb: FormBuilder, private location: Location,private groupService: CommonApiService,  private route: ActivatedRoute
   ) {}
@@ -104,6 +105,8 @@ export class LoanApplicantComponent implements OnInit {
     this.simpleInterest = parseFloat(this.calculateSimpleInterest(principal, rate, period).toFixed(2));
     this.totalSimple = parseFloat((principal + this.simpleInterest).toFixed(2));
     this.principalAmount = principal;
+    this.emiAmount = this.totalSimple / period;
+
   }
 
   generatePDF(): void {

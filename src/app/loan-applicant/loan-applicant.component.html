@@ -118,11 +118,16 @@
             <span class="label">Principal Amount:</span>
             <span class="value">₹ {{ principalAmount | number: '1.2-2' }}</span>
           </div>
+          <div class="summary-item">
+            <span class="label">Monthly EMI:</span>
+            <span class="value">₹ {{ emiAmount | number: '1.2-2' }}</span>
+          </div>
           <div class="summary-item total">
             <span class="label">Total Value (Simple):</span>
             <span class="value">₹ {{ totalSimple | number: '1.2-2' }}</span>
           </div>
-        </mat-card>
+
+          </mat-card>
       
       </mat-card-content>
 
